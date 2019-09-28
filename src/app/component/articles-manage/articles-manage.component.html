@@ -10,16 +10,19 @@
   <div class="container">
     <table class="table">
       <tr>
-        <th *ngFor="let title of titles">
-          {{title}}
-        </th>
-        <th>
-          operation
-        </th>
+        <th>标题</th>
+        <th>创建时间</th>
+        <th>标签</th>
+        <th>操作</th>
       </tr>
       <tr *ngFor="let singledata of this.data">
         <td *ngFor="let title of titles">
           {{singledata[title]}}
+        </td>
+        <td>
+          <span class="tag" *ngFor="let tag of singledata.tags">
+            {{tag.name}}
+          </span>
         </td>
         <td>
           <button class="btn btn-primary btn-sm" (click)="onEdit(singledata.id)">编辑</button>

@@ -10,9 +10,6 @@ import {ArticleService} from '../../service/article.service';
 import {Article} from '../../class/article';
 import {Router} from '@angular/router';
 
-/**
- * @title Table retrieving data through HTTP
- */
 
 @Component({
   selector: 'app-articles-manage',
@@ -20,7 +17,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./articles-manage.component.css']
 })
 export class ArticlesManageComponent implements OnInit {
-  titles: string[] = ['title', 'username', 'target', 'date'];
+  titles: string[] = ['title', 'date'];
   data: Article[]=[];
 
   isLoadingResults = true;
@@ -38,10 +35,12 @@ export class ArticlesManageComponent implements OnInit {
   }
 
   onPage(size,page) {
-    this.articleService.getArticles(size,page).subscribe(res=>{
+    this.isLoadingResults = true;
+    this.articleService.getOwnArticles(size,page).subscribe(res=>{
       this.isLoadingResults = false;
       this.isRateLimitReached = false;
       this.data=res.data;
+      console.log(this.data);
       this.paginator.length = res.results_length;
     },error => {
       this.isLoadingResults = false;

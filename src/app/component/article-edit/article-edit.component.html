@@ -7,10 +7,19 @@
 
     <div class="form-group">
       <label>标签</label><br/>
-      <button type="button" (click)="onAddTag()">+</button>
-      <a *ngFor="let tag of article.tags" class="tag">
+      <a *ngFor="let tag of article.tags" class="tag" (click)="deleteTag(tag)">
         {{tag.name}}
       </a>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          选择标签
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" *ngFor="let tag of this.tagService.tags" (click)="onAddTag(tag)">{{tag.name}}</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="onNewTag()">添加标签</a>
+        </ul>
+      </div>
     </div>
 
     <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="article.content" name="content">

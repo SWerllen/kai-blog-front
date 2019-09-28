@@ -22,19 +22,6 @@ export class ArticleService {
 
   }
 
-  getArticles(size=undefined,page=undefined){
-    console.log(`获取文章 ${size} of ${page}`)
-    return this.http.get<ArticlesMessage>(Url.article,{params:{size:size,page:page}}).pipe(
-      catchError(ErrorHandleService.handleError('getArticles',new ArticlesMessage(false,"获取文章时出现了错误",[],0))),
-      tap(res=>{
-        console.log(res);
-        if(res.success){
-          this.articles = res.data;
-        }
-      })
-    )
-  }
-
   deleteArticle(id:number){
     const postOption = {
       headers: new HttpHeaders({
@@ -74,14 +61,27 @@ export class ArticleService {
       withCredentials:true
     }
     return this.http.post<NormalMessage>(Url.article, article, postOption).pipe(
-      catchError(ErrorHandleService.handleError('postArticle', {success: false, message: "出现了点问题！"})),
+      catchError(ErrorHandleService.handleError('postArticle', {success: false, message: "连接出现了点问题！"})),
       tap(res=>console.log)
     );
   }
 
-  getMore(size,page) {
+  getArticles(size=undefined,page=undefined){
+    console.log(`获取文章 ${size} of ${page}`)
     return this.http.get<ArticlesMessage>(Url.article,{params:{size:size,page:page}}).pipe(
       catchError(ErrorHandleService.handleError('getArticles',new ArticlesMessage(false,"获取文章时出现了错误",[],0))),
+      tap(res=>{
+        console.log(res);
+        if(res.success){
+          this.articles = res.data;
+        }
+      })
+    )
+  }
+
+  getMore(size,page) {
+    return this.http.get<ArticlesMessage>(Url.article,{params:{size:size,page:page}}).pipe(
+      catchError(ErrorHandleService.handleError('getArticles',new ArticlesMessage(false,"获取文章时连接出现了错误",[],0))),
       tap(res=>{
         console.log(res);
         if(res.success){
@@ -90,4 +90,33 @@ export class ArticleService {
       })
     )
   }
+
+  getOwnArticles(size=undefined,page=undefined) {
+    console.log(`获取文章 ${size} of ${page}`)
+    return this.http.get<ArticlesMessage>(Url.ownarticle,{params:{size:size,page:page},withCredentials:true}).pipe(
+      catchError(ErrorHandleService.handleError('getArticles',new ArticlesMessage(false,"获取文章时出现了错误",[],0))),
+      tap(res=>{
+        console.log(res);
+        if(res.success){
+          this.articles = res.data;
+        }
+      })
+    )
+  }
+
+
+  addClick(num: number) {
+    console.log(`${Url.addclick}${num}`)
+    return this.http.post<NormalMessage>(`${Url.addclick}${num}`,{},{withCredentials:true}).pipe(
+      catchError(ErrorHandleService.handleError<NormalMessage>('addClick',new NormalMessage(false,"增加点击量时连接出现了错误"))),
+      map(res=>{
+        console.log(res);
+        if(res.success){
+          return res.data;  //目前点击量
+        }
+      })
+    )
+  }
+
+
 }

@@ -10,6 +10,6 @@ export class Article {
     public clicktime:number = 0,
     public content:string = "",
     public username:string="defaultname", //这是用户的用户名，和后台的存储有差别
-    public tags:Tag[]=[]
+    public tags:Tag[]=new Array()
   ){}
 }

@@ -24,6 +24,7 @@ import {MatCheckboxModule, MatFormFieldModule, MatProgressSpinnerModule} from '@
 import { MainContentComponent } from './component/main-content/main-content.component';
 import { RightSideComponent } from './component/right-side/right-side.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TagManageComponent } from './component/tag-manage/tag-manage.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ArticlesManageComponent,
     MainContentComponent,
     RightSideComponent,
+    TagManageComponent,
   ],
   imports: [
     BrowserModule,

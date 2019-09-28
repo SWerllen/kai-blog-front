@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/bootstrap";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -8,7 +7,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .tag{
+  display: inline-block;
+  padding: 2px 10px;
   background: rgba(220, 242, 255, 0.52);
   border-radius: 5px;
   margin: 0 3px;
+}
+.tag:hover{
+  background: rgba(128, 255, 252, 0.8);
 }
