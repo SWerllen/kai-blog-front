@@ -1,0 +1,46 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <h2 class="register_title">用户注册</h2>
+      <div class="form-group">
+        <label>用户名</label>
+        <input id="username" type="text" class="form-control"(input)="onUsernameInput(username.value)" name="username" [(ngModel)]="this.user.username"  #username/>
+        <div [hidden]="myCheckList.username_exist.able"
+             class="alert alert-danger">
+          {{this.myCheckList.username_exist.message}}
+        </div>
+        <div [hidden]="myCheckList.username_format.able"
+             class="alert alert-danger">
+          {{this.myCheckList.username_format.message}}
+        </div>
+      </div>
+    <div class="form-group">
+      <label>邮箱</label>
+      <input #email type="email" class="form-control" name="email" [(ngModel)]="this.user.email" (input)="onEmailInput(email)"/>
+      <div [hidden]="myCheckList.email.able"
+           class="alert alert-danger">
+        {{this.myCheckList.email.message}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label>密码</label>
+      <input #password type="password" class="form-control" name="password" [(ngModel)]="this.user.password" (input)="onPasswordInput(password.value)"/>
+      <div [hidden]="myCheckList.password.able"
+           class="alert alert-danger">
+        {{this.myCheckList.password.message}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label>重复密码</label>
+      <input #pass_rpt type="password" class="form-control" name="pass_rpt" (input)="onPassRPTInput(password.value,pass_rpt.value)"/>
+      <div [hidden]="myCheckList.pass_rpt.able"
+           class="alert alert-danger">
+        {{this.myCheckList.pass_rpt.message}}
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-success">提交注册</button>
+      <button type="button" class="btn btn-success" routerLink="/signin">登录</button>
+    </div>
+  </form>
+</div>

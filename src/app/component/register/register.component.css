@@ -1,0 +1,41 @@
+.myform{
+  background: #d2f0ff;
+  width: 400px;
+  padding: 25px 10px;
+  text-align: center;
+}
+
+.content div{
+  margin: 20px auto;
+  display: flex;
+  justify-content: flex-start;
+  width: 240px;
+}
+
+.myform div input{
+  flex-shrink: 1;
+}
+
+.myinput{
+  border: 0px;
+  box-shadow: black;
+  height: 24px;
+  margin: 0 5px;
+}
+
+.register_title{
+  margin-bottom: 40px;
+}
+
+.content{
+  background: antiquewhite;
+  width: 80%;
+  display: inline-block;
+}
+
+.label {
+  width: 70px;
+  text-align: left;
+  line-height: 24px;
+  flex-shrink: 0;
+}

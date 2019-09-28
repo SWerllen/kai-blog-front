@@ -1,0 +1,26 @@
+<div class="nav nav-pills nav-fill justify-content-center">
+  <ul class="nav">
+    <li class="nav-item hover">
+      <a class="nav-link" routerLink="article-list">主页</a>
+    </li>
+    <li class="nav-item hover">
+      <a class="nav-link" routerLink="article-edit">添加文章</a>
+    </li>
+    <span *ngIf="this.userManager.user!=null" class="nav-item nav" style="position: relative;left:100px;">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="back-manage" >{{this.userManager.user.username}}</a>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-primary btn-sm" (click)="onSignOut()">注销</button>
+    </li>
+  </span>
+    <span *ngIf="this.userManager.user==null" class="nav-item nav" style="position: relative;left:100px;">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="signin" >登录</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="register">注册</a>
+    </li>
+  </span>
+  </ul>
+</div>

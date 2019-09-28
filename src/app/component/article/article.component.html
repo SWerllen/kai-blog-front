@@ -1,0 +1,7 @@
+<div class="body">
+  <blockquote class="blockquote text-center">
+    <h2 class="mb-0">{{article.title}}</h2>
+    <div class="card-subtitle mb-2 text-muted"><span>作者：{{article.username}}  点击量：{{article.clicktime}}</span></div>
+  </blockquote>
+  <p [innerHTML]="article.content" class="text-body"></p>
+</div>

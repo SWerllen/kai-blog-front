@@ -1,0 +1,22 @@
+<div infinite-scroll
+     [infiniteScrollDistance]="scrollDistance"
+     [infiniteScrollUpDistance]="scrollUpDistance"
+     [infiniteScrollThrottle]="throttle"
+     (scrolled)="onScrollDown()">
+<div *ngFor="let article of this.articleService.articles" class="card">
+  <div class="card-body">
+  <h5 class="card-title">{{article.title}}</h5>
+    <div class="card-subtitle mb-2 text-muted">
+    <span> 作者：{{article.username}} </span>
+    <span> 点击量：{{article.clicktime}} </span>
+    <span> 标签：
+      <a *ngFor="let tag of article.tags" class="tag" [routerLink]="''">
+        {{tag.name}};
+      </a>
+    </span>
+    </div>
+    <p class="card-text" [innerHTML]="article.content">    </p>
+    <a [routerLink]="['/article',article.id]" class="btn btn-primary">查看详情</a>
+  </div>
+</div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>标题</label>
+      <input  class="form-control" type="text" [(ngModel)]="article.title" name="title"/>
+    </div>
+
+    <div class="form-group">
+      <label>标签</label><br/>
+      <button type="button" (click)="onAddTag()">+</button>
+      <a *ngFor="let tag of article.tags" class="tag">
+        {{tag.name}}
+      </a>
+    </div>
+
+    <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="article.content" name="content">
+
+    </angular-editor>
+    <div>
+      <button *ngIf="idEdit" type="submit" class="btn btn-success">修改</button>
+      <button *ngIf="!idEdit" type="submit" class="btn btn-success">提交</button>
+      <button type="button" (click)="onReset()" class="btn btn-success">重置</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,15 @@
+table {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.example-table-container {
+  position: relative;
+  max-height: 800px;
+  overflow: auto;
+  margin: 20px;
+}
+
+.out-container{
+  padding: 30px;
+}
