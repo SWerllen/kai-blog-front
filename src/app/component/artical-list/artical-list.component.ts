@@ -49,12 +49,16 @@ export class ArticalListComponent implements OnInit {
 
   onScrollDown() {
     if(this.targetId<1){
-      this.articleService.getMore(this.size,this.page++).subscribe(res=>{
-        console.log(this.articleService.articles);
+      this.articleService.getMore(this.size,this.page).subscribe(res=>{
+        if(res.data.length){
+          this.page++;
+        }
       })
     }else{
-      this.articleService.getMoreDivided(this.size,this.page++,this.targetId).subscribe(res=>{
-        console.log(this.articleService.articles);
+      this.articleService.getMoreDivided(this.size,this.page,this.targetId).subscribe(res=>{
+        if(res.data.length){
+          this.page++;
+        }
       })
     }
   }x
