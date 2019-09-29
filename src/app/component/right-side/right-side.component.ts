@@ -3,6 +3,7 @@ import {TagService} from '../../service/tag.service';
 import {Article} from '../../class/article';
 import {ArticleService} from '../../service/article.service';
 import {Tag} from '../../class/tag';
+import {UserManageService} from '../../service/user-manage.service';
 
 @Component({
   selector: 'app-right-side',
@@ -11,12 +12,12 @@ import {Tag} from '../../class/tag';
 })
 
 export class RightSideComponent implements OnInit {
-
   hottest:Article[] = [];
   tags:Tag[] = [];
   constructor(
     private tagService:TagService,
-    private articleService:ArticleService
+    private articleService:ArticleService,
+    private userService:UserManageService
   ) { }
 
   ngOnInit() {

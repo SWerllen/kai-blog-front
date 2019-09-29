@@ -140,7 +140,6 @@ export class ArticleService {
   }
 
   addClick(num: number) {
-    console.log(`${Url.addclick}${num}`)
     return this.http.post<NormalMessage>(`${Url.addclick}${num}`,{},{withCredentials:true}).pipe(
       catchError(ErrorHandleService.handleError<NormalMessage>('addClick',new NormalMessage(false,"增加点击量时连接出现了错误"))),
       map(res=>{

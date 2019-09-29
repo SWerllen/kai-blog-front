@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ArticleService} from '../../service/article.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -14,6 +14,7 @@ export class ArticalListComponent implements OnInit {
   page=1;
   size=5;
   targetId=0;
+  @Output() notify=new EventEmitter();
   constructor(
     private articleService : ArticleService,
     private activatedRoute : ActivatedRoute
@@ -48,6 +49,7 @@ export class ArticalListComponent implements OnInit {
   }
 
   onScrollDown() {
+    this.notify.emit();
     if(this.targetId<1){
       this.articleService.getMore(this.size,this.page).subscribe(res=>{
         if(res.data.length){
@@ -61,5 +63,5 @@ export class ArticalListComponent implements OnInit {
         }
       })
     }
-  }x
+  }
 }
