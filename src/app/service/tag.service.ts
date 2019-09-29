@@ -18,8 +18,8 @@ export class TagService {
     private http:HttpClient
   ) { }
 
-  getTags(){
-    return this.http.get<TagsMessage>(Url.tag,{withCredentials:true}).pipe(
+  getTags(size=undefined,page=undefined){
+    return this.http.get<TagsMessage>(Url.tag,{params:{size:size,page:page},withCredentials:true}).pipe(
       catchError(ErrorHandleService.handleError<TagsMessage>('getTags',new TagsMessage())),
       tap(res=>{
         console.log(res);
@@ -36,7 +36,7 @@ export class TagService {
         type:'application/json'
       }),
       withCredentials:true
-    }
+    };
     return this.http.post<TagsMessage>(Url.tag,tag,option).pipe(
       catchError(ErrorHandleService.handleError<TagsMessage>('addTags',new TagsMessage())),
       tap(res=>{
@@ -46,6 +46,24 @@ export class TagService {
         }
       })
     )
+  }
+
+  deleteTag(id:number){
+    return this.http.delete<NormalMessage>(Url.tag+id,{withCredentials:true}).pipe(
+      catchError(ErrorHandleService.handleError<NormalMessage>('addTags',new NormalMessage()))
+    );
+  }
+
+  updateTag(id:number,newName){
+    const options={
+      header:new HttpHeaders({
+        type:'application/json'
+      }),
+      withCredentials:true
+    }
+    return this.http.put<NormalMessage>(Url.tag+id,{name:newName},options).pipe(
+      catchError(ErrorHandleService.handleError<NormalMessage>('addTags',new NormalMessage()))
+    );
   }
 
 }

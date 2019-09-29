@@ -13,12 +13,13 @@ import {MainContentComponent} from '../component/main-content/main-content.compo
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'signin' ,component:SigninComponent},
-  { path:  '', redirectTo: 'signin', pathMatch: 'full'},
+  {path:  '', redirectTo: 'signin', pathMatch: 'full'},
   {path: 'article-list',component:MainContentComponent},
   {path: 'article/:id', component: ArticleComponent},
   {path:'article-edit',component:ArticleEditComponent},
   {path:'back-manage',component:BackManageComponent},
-  {path:'article-edit/:id',component:ArticleEditComponent}
+  {path:'article-edit/:id',component:ArticleEditComponent},
+  {path:'divided/:id',component:MainContentComponent}
 ]
 
 @NgModule({

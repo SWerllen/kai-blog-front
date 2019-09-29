@@ -104,6 +104,31 @@ export class ArticleService {
     )
   }
 
+  getDividedArticles(size=undefined,page=undefined,target=0) {
+    console.log(`获取文章 ${size} of ${page}`)
+    return this.http.get<ArticlesMessage>(Url.divided+target,{params:{size:size,page:page},withCredentials:true}).pipe(
+      catchError(ErrorHandleService.handleError('getArticles',new ArticlesMessage(false,"获取文章时出现了错误",[],0))),
+      tap(res=>{
+        console.log(res);
+        if(res.success){
+          this.articles = res.data;
+        }
+      })
+    )
+  }
+
+  getMoreDivided(size=undefined,page=undefined,target=0) {
+    console.log(`获取文章 ${size} of ${page}`)
+    return this.http.get<ArticlesMessage>(Url.divided+target,{params:{size:size,page:page},withCredentials:true}).pipe(
+      catchError(ErrorHandleService.handleError('getArticles',new ArticlesMessage(false,"获取文章时出现了错误",[],0))),
+      tap(res=>{
+        console.log(res);
+        if(res.success){
+          this.articles=this.articles.concat(res.data);
+        }
+      })
+    )
+  }
 
   addClick(num: number) {
     console.log(`${Url.addclick}${num}`)

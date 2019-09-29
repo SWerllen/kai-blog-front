@@ -5,6 +5,7 @@ export enum Url {
   article = 'http://www.a.com:3000/api/article/',
   signout = 'http://www.a.com:3000/users/signout/',
   addclick = 'http://www.a.com:3000/api/article/click/',
-  tag = 'http://www.a.com:3000/api/tag',
-  ownarticle = 'http://www.a.com:3000/api/article/own'
+  tag = 'http://www.a.com:3000/api/tag/',
+  ownarticle = 'http://www.a.com:3000/api/article/own/',
+  divided = 'http://www.a.com:3000/api/article/divided/'
 }

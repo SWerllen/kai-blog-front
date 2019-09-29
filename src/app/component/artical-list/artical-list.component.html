@@ -10,7 +10,7 @@
     <span> 作者：{{article.username}} </span>
     <span> 点击量：{{article.clicktime}} </span>
     <span> 标签：
-      <a *ngFor="let tag of article.tags" class="tag" [routerLink]="''">
+      <a *ngFor="let tag of article.tags" class="tag" [routerLink]="['/divided',tag.id]">
         {{tag.name}};
       </a>
     </span>

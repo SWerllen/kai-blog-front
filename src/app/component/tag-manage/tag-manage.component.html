@@ -1,1 +1,31 @@
-<p>tag-manage works!</p>
+<div class="out-container">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+      GitHub's API rate limit has been reached. It will be reset in one minute.
+    </div>
+  </div>
+
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th>标签名</th>
+      </tr>
+      <tr *ngFor="let singledata of this.data">
+        <td>
+          {{singledata.name}}
+        </td>
+        <td>
+
+        </td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="onEdit(singledata.id)">编辑</button>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(singledata.id)">删除</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <mat-paginator #paginator [pageSize]="pageSize" (page)="onPage(paginator.pageSize,paginator.pageIndex+1)"></mat-paginator>
+</div>
