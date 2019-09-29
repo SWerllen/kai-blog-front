@@ -12,7 +12,7 @@ import {NormalMessage} from '../class/normal-message';
 })
 export class TagService {
 
-  tags:Tag[] = [];
+  tags:Array<Tag> = new Array();
 
   constructor(
     private http:HttpClient
@@ -26,6 +26,15 @@ export class TagService {
         if(res.success){
           this.tags=res.data;
         }
+      })
+    )
+  }
+
+  getTagsAnonymous(){
+    return this.http.get<TagsMessage>(Url.tag).pipe(
+      catchError(ErrorHandleService.handleError<TagsMessage>('getTags',new TagsMessage())),
+      tap(res=>{
+        console.log(res);
       })
     )
   }

@@ -7,5 +7,6 @@ export enum Url {
   addclick = 'http://www.a.com:3000/api/article/click/',
   tag = 'http://www.a.com:3000/api/tag/',
   ownarticle = 'http://www.a.com:3000/api/article/own/',
-  divided = 'http://www.a.com:3000/api/article/divided/'
+  divided = 'http://www.a.com:3000/api/article/divided/',
+  hottest = 'http://www.a.com:3000/api/article/hottest/'
 }

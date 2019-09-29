@@ -25,6 +25,7 @@ export class ArticalListComponent implements OnInit {
       this.targetId = +params.get('id')
       console.log(this.targetId);
       if(this.targetId>1){
+        this.page=1;
         this.articleService.getDividedArticles(this.size,this.page++,this.targetId).subscribe();
         return;
       }else{

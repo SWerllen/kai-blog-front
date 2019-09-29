@@ -1,0 +1,28 @@
+<div class="card-title">
+    热门文章：
+</div>
+<ul class="list-group">
+  <a class="list-group-item list-group-item-action" *ngFor="let art of hottest" [routerLink]="['/article',art.id]">
+    {{art.title}}
+  </a>
+</ul>
+<br/>
+<div class="card">
+  <div class="card-body">
+  <div class="card-title">
+    我的标签：
+  </div>
+    <button type="button" class="btn btn-primary btn-sm" *ngFor="let tag of this.tagService.tags" [routerLink]="['/divided',tag.id]">{{tag.name}}</button>
+  </div>
+</div>
+<br/>
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">
+  标签列表：
+</div>
+<button type="button" class="btn btn-primary btn-sm" *ngFor="let tag of tags" [routerLink]="['/divided',tag.id]">{{tag.name}}</button>
+  </div>
+</div>
+    <br/>
+<br/>

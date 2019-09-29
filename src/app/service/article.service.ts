@@ -14,7 +14,7 @@ import {NormalMessage} from '../class/normal-message';
 })
 export class ArticleService {
 
-  articles:Article[]=new Array();
+  articles:Array<Article> =new Array();
 
   constructor(
     private http:HttpClient
@@ -126,6 +126,15 @@ export class ArticleService {
         if(res.success){
           this.articles=this.articles.concat(res.data);
         }
+      })
+    )
+  }
+
+  getHottest(){
+    return this.http.get<ArticlesMessage>(Url.hottest).pipe(
+      catchError(ErrorHandleService.handleError('getArticles',new ArticlesMessage(false,"获取热门文章时出现了错误",[],0))),
+      tap(res=>{
+        console.log(res);
       })
     )
   }
